@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://exonia.us/og-image.webp',
+        url: 'https://exonia.us/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Exonia North America sustainable packaging solutions'
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Exonia North America | Sustainable & Innovative Packaging',
     description: 'Custom biodegradable paper bags, multi-layer sacks and more—Exonia North America’s eco-friendly packaging for U.S. food, pharma & industrial markets.',
-    images: ['https://exonia.us/og-image.webp']
+    images: ['https://exonia.us/og-image.png']
   },
   robots: {
     index: true,
