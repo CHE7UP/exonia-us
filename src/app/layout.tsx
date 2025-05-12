@@ -15,10 +15,6 @@ const geistMono = Geist_Mono({
 });
 
 
-// app/layout.tsx
-import './globals.css'
-import type { Metadata } from 'next'
-
 export const metadata: Metadata = {
   title: 'Exonia North America | Sustainable & Innovative Packaging',
   description: 'Exonia North America delivers custom, biodegradable paper packaging solutions for food, pharma, and industrial markets across the U.S.',
@@ -60,18 +56,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true
   }
-}
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  )
 }
 
 export default function RootLayout({
