@@ -1,4 +1,3 @@
-// LanguageSelector.tsx
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -14,8 +13,8 @@ interface LanguageSelectorProps {
   currentLanguage?: string;
 }
 
-const LanguageSelector: React.FC<LanguageSelectorProps> = ({ 
-  currentLanguage = 'EN' 
+const LanguageSelector: React.FC<LanguageSelectorProps> = ({
+  currentLanguage = 'EN'
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -40,10 +39,9 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsOpen(false);
-    }, 100); // 500ms delay before closing
+    }, 100);
   };
 
-  // Clear timeout on unmount
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
@@ -52,14 +50,12 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     };
   }, []);
 
-  // Close the dropdown on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -67,40 +63,45 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   }, []);
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      className="relative z-[2000]"
+      className="relative z-500"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button 
+      <button
+        id="language-menu-button"
         type="button"
         className={`text-sm font-medium transition-all flex items-center gap-1 px-3 py-1 rounded-full ${
-          isOpen 
-            ? 'bg-gray-200 hover:text-gray-900' 
-            : 'hover:bg-gray-200 hover:text-gray-900'
+          isOpen
+            ? 'bg-gray-200 text-gray-900'
+            : 'text-gray-700 hover:bg-gray-200 hover:text-gray-900'
         }`}
-        aria-expanded={isOpen.toString()}
+        aria-expanded="true"
         aria-haspopup="true"
+        aria-controls="language-options-menu"
       >
-        {currentLanguage} 
-        <ChevronDown 
-          size={14} 
-          className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} 
+        {currentLanguage.toUpperCase()}
+        <ChevronDown
+          size={14}
+          className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
-      
+
       {isOpen && (
-        <div 
-          className="absolute right-(-2) mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-gray-300 ring-opacity-5 z-10 overflow-hidden
-                     animate-fadeIn"
+        <div
+          id="language-options-menu"
+          className="absolute -right-2 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-gray-300 ring-opacity-5 z-10 overflow-hidden animate-fadeIn"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          <div role="menu" aria-orientation="vertical">
+          <div role="menu" aria-orientation="vertical" aria-labelledby="language-menu-button">
             {languages.map((language) => (
-              <div key={language.code} role="menuitem" onMouseEnter={handleMouseEnter}>
-                <Link 
-                  href={`/${language.code}`} 
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+              <div key={language.code} role="menuitem">
+                <Link
+                  href={`/${language.code}`}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                 >
                   {language.label}
                 </Link>
