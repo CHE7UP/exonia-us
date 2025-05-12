@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ededed;
     --foreground: #ededed;
   }
 }
@@ -23,4 +23,151 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+
 }
+
+/* globals.css */
+/* globals.css */
+:root {
+  /* Primary brand colors */
+  --primary: #FFD400; /* Yellow from the logo */
+  --primary-light: #FFDE40;
+  --primary-dark: #E6BE00;
+  
+  /* Additional brand palette */
+  --secondary: #1B1918; /* Dark color from the logo */
+  --secondary-light: #2F2D2C;
+  --secondary-dark: #000000;
+  
+  /* Accent colors */
+  --accent: #e76f51; /* For calls to action or important elements */
+  
+  /* Neutral colors */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  
+  /* System colors */
+  --success: #22c55e;
+  --warning: #eab308;
+  --error: #ef4444;
+  --info: #3b82f6;
+}
+
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--gray-900);
+}
+
+/* Add this to your global CSS file (e.g., globals.css or a dedicated component CSS) */
+
+/* Initial load animations */
+@keyframes fadeInScaleY {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Ripple effect animation */
+@keyframes rippleEffect {
+  to {
+    transform: scale(3); /* Adjust scale as needed */
+    opacity: 0;
+  }
+}
+
+/* Helper classes to apply animations */
+.animate-fadeInScaleY {
+  animation: fadeInScaleY 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* power3.out equivalent */
+  transform-origin: top; /* Ensure it scales from the top */
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) forwards; /* power2.out equivalent */
+  animation-delay: 0.8s; /* Start after divider animation (1.2s - 0.4s offset) */
+}
+
+.animate-pulseScale {
+  animation: pulseScale 2s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite; /* sine.inOut equivalent */
+}
+
+/* HeroHalfSection specific styles */
+.hero-half-section {
+  /* Faster background transition */
+  transition: background-color 0.15s ease-out; /* Faster duration */
+}
+
+.hero-half-section:hover {
+  /* More yellow background */
+  background-color: rgba(255, 212, 0, 0.6); /* More yellow, less transparent */
+}
+
+.hero-half-section .description {
+  opacity: 0;
+  transform: translateY(15px); /* Start slightly lower */
+  /* Faster description transition */
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  transition-delay: 0.05s; /* Slight delay after background */
+}
+
+.hero-half-section:hover .description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-half-section .ripple {
+  position: absolute;
+  border-radius: 50%;
+  /* Use a more appropriate yellow for the ripple */
+  background-color: rgba(255, 212, 0, 0.8);
+  pointer-events: none;
+  width: 10px; /* Start small */
+  height: 10px;
+  transform: scale(0);
+  opacity: 0;
+  left: var(--ripple-x, 50%); /* Use CSS variables for position */
+  top: var(--ripple-y, 50%);
+  transform-origin: center;
+  margin-left: -5px; /* Offset by half width */
+  margin-top: -5px; /* Offset by half height */
+}
+
+.hero-half-section:hover .ripple {
+  /* Trigger ripple animation on hover */
+  animation: rippleEffect 0.5s ease-out forwards; /* Faster ripple */
+}
+
+/* You can add any additional global styles here */
