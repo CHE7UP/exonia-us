@@ -3,8 +3,8 @@ import React from 'react';
 const Logo = ({ color = '#1B1918' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink" 
-    xmlSpace="preserve" 
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    xmlSpace="preserve"
     width="210px"
     height="28px"
     version="1.1"
@@ -19,15 +19,18 @@ const Logo = ({ color = '#1B1918' }) => (
     data-name="Layer 1"
   >
     <defs>
-      <style type="text/css">{`@font-face {
-            font-family: "Rubik Light";
-            font-variant: normal;
-            font-style: normal;
-            font-weight: 300;
-            src: url("#FontID0") format(svg);
-          }
-          .fil1 {fill:#FFD400}
-          .fnt0 {font-weight:300;font-size:9.63px;font-family:'Rubik Light'}`}</style>
+      {/* Corrected: Using a standard string literal instead of template literal backticks */}
+      <style type="text/css">{
+        "@font-face {\n" +
+        "  font-family: \"Rubik Light\";\n" +
+        "  font-variant: normal;\n" +
+        "  font-style: normal;\n" +
+        "  font-weight: 300;\n" +
+        "  src: url(\"#FontID0\") format(svg);\n" +
+        "}\n" +
+        ".fil1 {fill:#FFD400}\n" +
+        ".fnt0 {font-weight:300;font-size:9.63px;font-family:'Rubik Light'}"
+      }</style>
     </defs>
     <g id="Layer_x0020_1">
       <metadata id="CorelCorpID_0Corel-Layer" />
