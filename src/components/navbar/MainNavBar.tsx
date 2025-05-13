@@ -773,7 +773,7 @@ const MainNavBar: React.FC = () => {
         <div className="flex-shrink-0">
           <Link href="/" onClick={isMobileMenuOpen ? closeMobileMenu : undefined}>
             {/* Ensure Logo component is imported */}
-            <Logo />
+            <Logo variant="dark"  />
           </Link>
         </div>
 

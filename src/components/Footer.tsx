@@ -240,7 +240,7 @@ const Footer: React.FC = () => {
           {/* Logo */}
           <div className="mb-4 md:mb-0 opacity-80 hover:opacity-100 transition-opacity duration-300">
             <Link href="/" aria-label="Company Homepage">
-              <Logo color="white" /> {/* Your company logo component */}
+              <Logo /> {/* Your company logo component */}
             </Link>
           </div>
 
