@@ -164,7 +164,7 @@ const HeroSection: React.FC = () => {
 
   return (
     // Use a generic class or ID if needed, heroRef not strictly necessary unless used elsewhere
-    <div className="relative w-full h-[60vh] min-h-[480px] max-h-[800px] overflow-hidden">
+    <div className="relative border-t-[4px] border-t-[#FFD400] w-full h-[60vh] min-h-[480px] max-h-[800px] overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         {/* Consider making overlay color adjustable or consistent with yellow theme */}
@@ -225,19 +225,24 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Video button - add animation class */}
-      <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <button
-          ref={videoButtonRef}
-          onClick={() => setVideoModalOpen(true)}
-          // Apply pulseScale animation class and standard hover effects
-          className="group flex items-center bg-primary/90 hover:bg-primary text-secondary px-4 py-2 border border-white rounded-full transition-colors duration-300 animate-pulseScale"
-        >
-          <div className="mr-2 bg-white rounded-full p-1 group-hover:scale-105 transition-transform duration-200"> {/* Simple CSS scale on hover */}
-            <Play size={12} fill="var(--primary)" className="ml-0.5" />
-          </div>
-          <span className="text-sm font-medium text-white/90">Watch Factory Tour</span>
-        </button>
-      </div>
+    <div className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <button
+        ref={videoButtonRef}
+        onClick={() => setVideoModalOpen(true)}
+        className="group cursor-pointer flex items-center bg-black/40 backdrop-blur-sm hover:bg-black/50 px-4 py-2 rounded-full transition-all duration-300 border border-white/20"
+      >
+        {/* Play icon with subtle animation */}
+        <div className="relative z-10 mr-2 bg-white/10 rounded-full p-1.5 group-hover:bg-yellow-400/20 transition-colors duration-300">
+          <Play size={12} fill="white" className="text-white" />
+          <div className="absolute inset-0 bg-white/20 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        </div>
+        
+        {/* Text with transition */}
+        <span className="relative z-10 text-xs font-medium tracking-wide text-white/90 group-hover:text-white transition-colors duration-300">
+          Watch Factory Tour
+        </span>
+      </button>
+    </div>
 
       {/* Video Modal (no changes needed here) */}
       {videoModalOpen && (
