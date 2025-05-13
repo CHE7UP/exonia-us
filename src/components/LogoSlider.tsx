@@ -2,43 +2,50 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 
 const clients = [
-  { name: 'Hervis Sports', logo: 'https://exonia.ro/wp-content/uploads/logo_hervis_sports.webp' },
-  { name: 'Procter & Gamble', logo: 'https://exonia.ro/wp-content/uploads/logo_procter_and_gamble.webp' },
-  { name: 'Coca-Cola', logo: 'https://exonia.ro/wp-content/uploads/logo_coca_cola.webp' },
-  { name: 'McDonald’s', logo: 'https://exonia.ro/wp-content/uploads/logo_mcdonalds.webp' },
-  { name: 'eMAG', logo: 'https://exonia.ro/wp-content/uploads/logo_e-mag.webp' },
-  { name: 'Mado', logo: 'https://exonia.ro/wp-content/uploads/logo_mado.webp' },
-  { name: 'Dr. Max', logo: 'https://exonia.ro/wp-content/uploads/logo_dr_max.webp' },
-  { name: 'eMAG (Duplicate)', logo: 'https://exonia.ro/wp-content/uploads/logo_e-mag.webp' },
+  { name: 'HERVIS SPORTS', logo: 'https://exonia.ro/wp-content/uploads/logo_hervis_sports.webp' },
+  { name: 'PROCTER & GAMBLE', logo: 'https://exonia.ro/wp-content/uploads/logo_procter_and_gamble.webp' },
+  { name: 'COCA-COLA', logo: 'https://exonia.ro/wp-content/uploads/logo_coca_cola.webp' },
+  { name: 'MCDONALD\'S', logo: 'https://exonia.ro/wp-content/uploads/logo_mcdonalds.webp' },
+  { name: 'EMAG', logo: 'https://exonia.ro/wp-content/uploads/logo_e-mag.webp' },
+  { name: 'MADO', logo: 'https://exonia.ro/wp-content/uploads/logo_mado.webp' },
+  { name: 'DR. MAX', logo: 'https://exonia.ro/wp-content/uploads/logo_dr_max.webp' },
+  { name: 'EMAG', logo: 'https://exonia.ro/wp-content/uploads/logo_e-mag.webp' },
 ];
 
 const ClientsSlider = () => {
   return (
-    <section className="bg-white py-10">
-      <div className="text-center mb-4 px-4">
-        <h2 className="text-xl lg:text-2xl font-semibold text-secondary mb-2">
-          Trusted by Global Brands
+    <section className="relative py-16 bg-gray-50">
+      {/* Subtle yellow accent line at the top */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-yellow-400"></div>
+      
+      <div className="relative z-10 text-center mb-8 px-4">
+        <h2 className="text-2xl lg:text-3xl font-bold text-secondary mb-3 uppercase tracking-wider">
+          <span className="border-b-2 border-yellow-400 pb-1">TRUSTED BY GLOBAL BRANDS</span>
         </h2>
-        <p className="text-sm lg:text-base text-secondary-light">
-          Serving sustainable solutions to North American and EU markets since 2001.
+        <p className="text-base lg:text-lg text-secondary-light uppercase tracking-wide">
+          SERVING SUSTAINABLE SOLUTIONS TO NORTH AMERICAN AND EU MARKETS SINCE 2001
         </p>
       </div>
-      <Marquee pauseOnHover gradient={false} speed={50}>
-        <div className="flex gap-12 items-center">
-          {clients.map((client, idx) => (
-            <div
-              key={idx}
-              className="flex items-center justify-center h-20 w-40 min-w-[120px] px-4"
-            >
-              <img
-                src={client.logo}
-                alt={`${client.name} logo`}
-                className="max-h-16 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
-              />
-            </div>
-          ))}
-        </div>
-      </Marquee>
+      
+      <div className="relative z-10">
+        <Marquee pauseOnHover gradient={false} speed={40}>
+          <div className="flex gap-16 items-center px-4">
+            {clients.map((client, idx) => (
+              <div
+                key={idx}
+                className="relative group flex items-center justify-center h-24 w-48 min-w-[160px] px-6"
+              >
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="max-h-16 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
+                />
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[2px] w-0 bg-yellow-400 group-hover:w-1/2 transition-all duration-300"></div>
+              </div>
+            ))}
+          </div>
+        </Marquee>
+      </div>
     </section>
   );
 };
