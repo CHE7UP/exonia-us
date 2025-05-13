@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 
 const Logo = ({ color = '#1B1918' }) => (
