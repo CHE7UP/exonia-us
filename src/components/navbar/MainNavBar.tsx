@@ -406,98 +406,84 @@ const industrySubmenuData: SubmenuColumn[] = [
 
 const productsSubmenuData: SubmenuColumn[] = [
     {
-        title: 'Category A',
+        title: 'Paper Bags With Handle',
         items: [
-            { name: 'Product 1', href: '/products/product-1'},
-            { name: 'Product 2', href: '/products/product-2'},
-            { name: 'Product 3', href: '/products/product-3'},
-            { name: 'Product 4', href: '/products/product-4'},
-            { name: 'Product 5', href: '/products/product-5'},
-            { name: 'Product 6', href: '/products/product-6'},
-            { name: 'Product 7', href: '/products/product-7'},
+            { name: 'Kraft Paper Carrier Bags', href: '/products/product-1'},
+            { name: 'Shopping Bags for textile stores', href: '/products/product-2'},
+            { name: 'Paper Bag with handle for restaurants delivery', href: '/products/product-3'},
+            { name: 'Shopping Paper Bag for pharmacies', href: '/products/product-4'},
+            { name: 'Ventilated Bag for fresh products', href: '/products/product-5'},
         ],
     },
     {
-        title: 'Category B',
+        title: 'Paper Bags Without Handle',
         items: [
-            { name: 'Product 4B', href: '/products/product-4b'}, // Ensure unique names if possible for keys
-            { name: 'Product 5B', href: '/products/product-5b'},
-            { name: 'Product 6B', href: '/products/product-6b'},
-            { name: 'Product 7B', href: '/products/product-7b'},
-            { name: 'Product 8', href: '/products/product-8'},
-            { name: 'Product 9', href: '/products/product-9'},
-            { name: 'Product 10', href: '/products/product-10'},
+            { name: 'Fast food Paper Bags', href: '/products/product-4b'}, // Ensure unique names if possible for keys
+            { name: 'Small Paper Bags for pharmacy', href: '/products/product-5b'},
         ],
     },
     {
-        title: 'Category C',
+        title: 'Paper Sacks',
         items: [
-            { name: 'Product 7C', href: '/products/product-7c'},
-            { name: 'Product 8C', href: '/products/product-8c'},
-            { name: 'Product 9C', href: '/products/product-9c'},
-            { name: 'Product 10C', href: '/products/product-10c'},
-            { name: 'Product 1C', href: '/products/product-1c'},
-            { name: 'Product 2C', href: '/products/product-2c'},
-            { name: 'Product 3C', href: '/products/product-3c'},
+            { name: 'Paper Sacks with handles made of 2-5 layers of paper', href: '/products/product-7c'},
         ]
     },
     {
-        title: 'Category D', // Changed to D for clarity
+        title: 'Wrapping Paper', // Changed to D for clarity
         items: [
-            { name: 'Product 7D', href: '/products/product-7d'},
-            { name: 'Product 8D', href: '/products/product-8d'},
-            { name: 'Product 9D', href: '/products/product-9d'},
-            { name: 'Product 10D', href: '/products/product-10d'},
-            { name: 'Product 1D', href: '/products/product-1d'},
-            { name: 'Product 2D', href: '/products/product-2d'},
-            { name: 'Product 3D', href: '/products/product-3d'},
+            { name: 'Wrapping paper sheets', href: '/products/product-7d'},
+        ]
+    },
+    {
+        title: 'Paper Corners',
+        items: [
+            { name: 'Paper corners for food products, pastries and confectionery', href: '/products/product-7e'},      
+        ]
+    },
+        {
+        title: 'Universal Stock Products',
+        items: [
+            { name: 'White Kraft Wrapping Paper EXONIA, 250×350 mm', href: '/products/product-7e'},
+            { name: 'Nature Kraft Wrapping Paper EXONIA, 250×350 mm', href: '/products/product-8e'},
+            { name: 'Placemats Duro Kraft Natur EXONIA, 293×400 mm, METROPOLITAN NEWS', href: '/products/product-9e'},
+            { name: 'Placemats White Kraft Paper EXONIA, 293×400 mm, METROPOLITAN NEWS', href: '/products/product-10e'},
+            { name: 'EXONIA Paper Bags, Natur Kraft with Flat Handles', href: '/products/product-1e'},
+            { name: 'EXONIA Paper Bags, White Kraft with Flat Handles', href: '/products/product-2e'},
+            { name: 'The bags are suitable for food and non-food shops, catering, confectioners and bakeries, fast-food, etc', href: '/products/product-3e'},      
         ]
     },
 ];
 
 const servicesSubmenuData: SubmenuColumn[] = [
   {
-    title: 'Sustainable Design & Consulting',
+    title: 'Custom Sustainable Packaging Design & Prototyping',
     items: [
-      { name: 'Bespoke Eco-Package Design', href: '/services/bespoke-eco-design' },
-      { name: 'Sustainable Material Expertise', href: '/services/sustainable-material-expertise' },
-      { name: 'Packaging Lifecycle Analysis (LCA)', href: '/services/lifecycle-analysis' },
-      { name: 'Circular Economy Strategy Development', href: '/services/circular-economy-strategy' },
-      { name: 'Eco-Branding & Graphic Design', href: '/services/eco-branding-packaging' },
-      { name: 'Packaging Sustainability Audits', href: '/services/packaging-sustainability-audits' },
+      { name: 'Digital mock-ups & on-demand samples', href: '/services/design-prototyping' },
+      { name: 'Material optimization analysis', href: '/services/material-optimization' },
+      { name: 'User-testing feedback loops', href: '/services/user-testing' },
     ],
   },
   {
-    title: 'EU Production & Quality Excellence',
+    title: 'Private-Label & On-Demand Printing',
     items: [
-      { name: 'State-of-the-Art EU Production', href: '/services/eu-production' },
-      { name: 'Ethical & Sustainable Sourcing', href: '/services/ethical-sourcing-production' },
-      { name: 'EU-Based Prototyping & Sampling', href: '/services/eu-prototyping-sampling' },
-      { name: 'Rigorous Quality Assurance & Testing', href: '/services/quality-assurance' },
-      { name: 'Custom Tooling & Mould Development', href: '/services/custom-tooling' },
-      { name: 'Advanced Print & Finishing Options', href: '/services/print-finishing-services' },
+      { name: 'Full-color variable-data print', href: '/services/variable-printing' },
+      { name: 'Eco-friendly inks & varnishes', href: '/services/eco-friendly-inks' },
     ],
   },
   {
-    title: 'Global Logistics & Market Access',
+    title: 'Subscription Replenishment & Inventory Management',
     items: [
-      { name: 'EU & North America Logistics Solutions', href: '/services/logistics-eu-na' },
-      { name: 'EU & NA Market Compliance Support', href: '/services/market-compliance-support' },
-      { name: 'Optimized Supply Chain Management', href: '/services/supply-chain-management' },
-      { name: 'Strategic EU Warehousing & Inventory', href: '/services/warehousing-inventory-eu' },
-      { name: 'Low-Carbon Shipping Solutions', href: '/services/low-carbon-shipping' },
-      { name: 'Dedicated After-Sales & Optimization Support', href: '/services/after-sales-optimization' },
+      { name: 'Scheduled shipment service', href: '/services/scheduled-shipments' },
+      { name: 'Automated reorder triggers', href: '/services/reorder-triggers' },
+      { name: 'Online portal & ESG metrics', href: '/services/portal-esg' },
     ],
   },
   {
-    title: 'Sustainability & Compliance',
+    title: 'Sustainability Consulting & Certification Support',
     items: [
-      { name: 'Sustainable Packaging Solutions', href: '/services/sustainable-packaging' },
-      { name: 'Compliance with EU Regulations', href: '/services/eu-regulations-compliance' },
-      { name: 'Sustainable Material Sourcing', href: '/services/sustainable-material-sourcing' },
-      { name: 'Eco-Friendly Packaging Solutions', href: '/services/eco-friendly-packaging' },
-      { name: 'Sustainability Consulting Services', href: '/services/sustainability-consulting' },
-      { name: 'Packaging Waste Management Solutions', href: '/services/packaging-waste-management' },
+      { name: 'Life-cycle assessments (LCA)', href: '/services/lca' },
+      { name: 'FSC/PEFC & compostability guidance', href: '/services/certification-guidance' },
+      { name: 'Custom eco-impact reporting', href: '/services/eco-reporting' },
     ],
   },
 ];
