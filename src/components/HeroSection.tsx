@@ -229,7 +229,8 @@ const HeroSection: React.FC = () => {
       <button
         ref={videoButtonRef}
         onClick={() => setVideoModalOpen(true)}
-        className="group cursor-pointer flex items-center bg-black/40 backdrop-blur-sm hover:bg-black/50 px-4 py-2 rounded-full transition-all duration-300 border border-white/20"
+        className="group cursor-pointer flex items-center bg-black/40 backdrop-blur-sm hover:bg-black/50 px-4 py-2 rounded-full transition-all duration-300 border border-white/20 transition-shadow duration-300
+         hover:shadow-[0_4px_12px_-2px_rgba(255,212,0,0.6)]"
       >
         {/* Play icon with subtle animation */}
         <div className="relative z-10 mr-2 bg-white/10 rounded-full p-1.5 group-hover:bg-yellow-400/20 transition-colors duration-300">

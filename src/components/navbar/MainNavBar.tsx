@@ -1,360 +1,21 @@
-
-// 'use client'
-
-// import React, { useState, useRef, useEffect } from 'react';
-// import Link from 'next/link';
-// import Logo from '../Logo'; // Assuming you have this component
-// import MegaMenu from './MegaMenu'; // Assuming you have this component
-
-// // --- Data & Types (Ensure these are defined or imported) ---
-// interface SubmenuItem {
-//   name: string;
-//   href: string;
-// }
-// export interface SubmenuColumn {
-//   title: string;
-//   items: SubmenuItem[];
-// }
-
-// // Example data (replace with your actual data structure if different)
-// const industrySubmenuData: SubmenuColumn[] = [
-//     // ... (paste the data structure from step 1 in previous answer here) ...
-//     {
-//         title: 'Food & Beverages',
-//         items: [
-//           { name: 'Dry food', href: '/industries/dry-food' },
-//           { name: 'Processed food', href: '/industries/processed-food' },
-//           { name: 'Fruit & vegetables', href: '/industries/fruit-vegetables' },
-//           { name: 'Fast food & take away', href: '/industries/fast-food-take-away' },
-//           { name: 'Sweets', href: '/industries/sweets' },
-//           { name: 'Beverages & Liquids', href: '/industries/beverages-liquids' },
-//           { name: 'Transport & Display', href: '/industries/transport-display' },
-//         ],
-//       },
-//       {
-//         title: 'Consumer & Luxury',
-//         items: [
-//           { name: 'Fashion & apparel', href: '/industries/fashion-apparel' },
-//           { name: 'E-commerce', href: '/industries/ecommerce' },
-//           { name: 'Cosmetics', href: '/industries/cosmetics' },
-//           { name: 'Chocolate & Confectionary', href: '/industries/chocolate-confectionary' },
-//           { name: 'Wine & Spirits', href: '/industries/wine-spirits' },
-//           { name: 'Carrier bags', href: '/industries/carrier-bags' },
-//           { name: 'Graphical & print', href: '/industries/graphical-print' },
-//           { name: 'Household & gardening', href: '/industries/household-gardening' },
-//           { name: 'Consumer electronics', href: '/industries/consumer-electronics' },
-//         ],
-//       },
-//       {
-//         title: 'Industrial',
-//         items: [
-//           { name: 'Industrial bags', href: '/industries/industrial-bags' },
-//           { name: 'Heavy Duty packaging', href: '/industries/heavy-duty-packaging' },
-//         ],
-//       },
-//       {
-//         title: 'Medical & Hygiene',
-//         items: [
-//           { name: 'Medical devices', href: '/industries/medical-devices' },
-//           { name: 'Hospital', href: '/industries/hospital' },
-//           { name: 'Hygiene & personal care', href: '/industries/hygiene-personal-care' },
-//           { name: 'Pharmaceuticals', href: '/industries/pharmaceuticals' },
-//           { name: 'Medical Packaging Blog', href: '/blog/medical-packaging' }, // Example link
-//         ],
-//       },
-// ];
-
-// const productsSubmenuData: SubmenuColumn[] = [ // Example for a different NavItem
-//     {
-//         title: 'Category A',
-//         items: [
-//             { name: 'Product 1', href: '/products/product-1'},
-//             { name: 'Product 2', href: '/products/product-2'},
-//             { name: 'Product 3', href: '/products/product-3'},
-//             { name: 'Product 4', href: '/products/product-4'},
-//             { name: 'Product 5', href: '/products/product-5'},
-//             { name: 'Product 6', href: '/products/product-6'},
-//             { name: 'Product 7', href: '/products/product-7'},
-//         ],
-//     },
-//     {
-//         title: 'Category B',
-//         items: [
-//             { name: 'Product 4', href: '/products/product-4'},
-//             { name: 'Product 5', href: '/products/product-5'},
-//             { name: 'Product 6', href: '/products/product-6'}, 
-//             { name: 'Product 7', href: '/products/product-7'},
-//             { name: 'Product 8', href: '/products/product-8'},
-//             { name: 'Product 9', href: '/products/product-9'},
-//             { name: 'Product 10', href: '/products/product-10'},   
-//         ],
-//     },
-//     {
-//         title: 'Category C',
-//         items: [  
-//             { name: 'Product 7', href: '/products/product-7'},
-//             { name: 'Product 8', href: '/products/product-8'},
-//             { name: 'Product 9', href: '/products/product-9'},
-//             { name: 'Product 10', href: '/products/product-10'},
-//             { name: 'Product 1', href: '/products/product-1'},  
-//             { name: 'Product 2', href: '/products/product-2'},
-//             { name: 'Product 3', href: '/products/product-3'},
-//         ]
-//     },
-//         {
-//         title: 'Category d',
-//         items: [  
-//             { name: 'Product 7', href: '/products/product-7'},
-//             { name: 'Product 8', href: '/products/product-8'},
-//             { name: 'Product 9', href: '/products/product-9'},
-//             { name: 'Product 10', href: '/products/product-10'},
-//             { name: 'Product 1', href: '/products/product-1'},  
-//             { name: 'Product 2', href: '/products/product-2'},
-//             { name: 'Product 3', href: '/products/product-3'},
-//         ]
-//     },
-//     // ... other columns
-// ]
-
-// const servicesSubmenuData: SubmenuColumn[] = [
-//   {
-//     title: 'Sustainable Design & Consulting',
-//     items: [
-//       { name: 'Bespoke Eco-Package Design', href: '/services/bespoke-eco-design' },
-//       { name: 'Sustainable Material Expertise', href: '/services/sustainable-material-expertise' },
-//       { name: 'Packaging Lifecycle Analysis (LCA)', href: '/services/lifecycle-analysis' },
-//       { name: 'Circular Economy Strategy Development', href: '/services/circular-economy-strategy' },
-//       { name: 'Eco-Branding & Graphic Design', href: '/services/eco-branding-packaging' },
-//       { name: 'Packaging Sustainability Audits', href: '/services/packaging-sustainability-audits' },
-//     ],
-//   },
-//   {
-//     title: 'EU Production & Quality Excellence',
-//     items: [
-//       { name: 'State-of-the-Art EU Production', href: '/services/eu-production' },
-//       { name: 'Ethical & Sustainable Sourcing', href: '/services/ethical-sourcing-production' },
-//       { name: 'EU-Based Prototyping & Sampling', href: '/services/eu-prototyping-sampling' },
-//       { name: 'Rigorous Quality Assurance & Testing', href: '/services/quality-assurance' },
-//       { name: 'Custom Tooling & Mould Development', href: '/services/custom-tooling' },
-//       { name: 'Advanced Print & Finishing Options', href: '/services/print-finishing-services' },
-//     ],
-//   },
-//   {
-//     title: 'Global Logistics & Market Access',
-//     items: [
-//       { name: 'EU & North America Logistics Solutions', href: '/services/logistics-eu-na' },
-//       { name: 'EU & NA Market Compliance Support', href: '/services/market-compliance-support' }, // Covers regulations like PPWR, FDA etc.
-//       { name: 'Optimized Supply Chain Management', href: '/services/supply-chain-management' },
-//       { name: 'Strategic EU Warehousing & Inventory', href: '/services/warehousing-inventory-eu' },
-//       { name: 'Low-Carbon Shipping Solutions', href: '/services/low-carbon-shipping' },
-//       { name: 'Dedicated After-Sales & Optimization Support', href: '/services/after-sales-optimization' },
-//     ],
-//   },
-//   {
-//     title: 'Sustainability & Compliance',
-//     items: [
-//       { name: 'Sustainable Packaging Solutions', href: '/services/sustainable-packaging' },
-//       { name: 'Compliance with EU Regulations', href: '/services/eu-regulations-compliance' },
-//       { name: 'Sustainable Material Sourcing', href: '/services/sustainable-material-sourcing' },
-//       { name: 'Eco-Friendly Packaging Solutions', href: '/services/eco-friendly-packaging' },
-//       { name: 'Sustainability Consulting Services', href: '/services/sustainability-consulting' },
-//       { name: 'Packaging Waste Management Solutions', href: '/services/packaging-waste-management' },
-//     ],
-//   },
-// ];
-
-// // --- NavItem Component (Modified) ---
-// interface NavItemProps {
-//   href: string;
-//   children: React.ReactNode;
-//   submenu?: SubmenuColumn[];
-//   onActivate?: (submenuData: SubmenuColumn[]) => void;
-//   onDeactivate?: () => void;
-//   isSubmenuActive?: boolean; // To control aria-expanded
-// }
-
-// const NavItem: React.FC<NavItemProps> = ({
-//   href,
-//   children,
-//   submenu,
-//   onActivate,
-//   onDeactivate,
-//   isSubmenuActive,
-// }) => {
-//   const [isLinkHovered, setIsLinkHovered] = useState(false); // For underline effect
-
-//   const handleMouseEnter = () => {
-//     setIsLinkHovered(true);
-//     if (submenu && onActivate) {
-//       onActivate(submenu);
-//     }
-//   };
-
-//   const handleMouseLeave = () => {
-//     setIsLinkHovered(false);
-//     // Deactivation (starting the hide timer) is always called if onDeactivate is provided,
-//     // regardless of whether there's a submenu. This allows MainNavBar to manage hiding
-//     // a menu if the mouse leaves a submenu-navitem and enters a non-submenu-navitem.
-//     if (onDeactivate) {
-//       onDeactivate();
-//     }
-//   };
-
-//   return (
-//     <div
-//       className="py-1" // Defines the hoverable area
-//       onMouseEnter={handleMouseEnter}
-//       onMouseLeave={handleMouseLeave}
-//     >
-//       <Link
-//         href={href}
-//         className="relative group text-gray-900 font-medium tracking-wide text-lg transition-colors duration-200 hover:text-yellow-500 block"
-//         aria-haspopup={!!submenu}
-//         aria-expanded={!!isSubmenuActive} // Controlled by MainNavBar
-//       >
-//         <span className="inline-block">{children}</span>
-//         <span
-//           className={`
-//             absolute -bottom-1 left-0 w-full h-0.5 bg-yellow-500
-//             transition-transform duration-300 origin-left
-//             ${isLinkHovered ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}
-//           `}
-//         ></span>
-//       </Link>
-//     </div>
-//   );
-// };
-
-// // --- MainNavBar Component (Modified) ---
-// const MainNavBar: React.FC = () => {
-//   const [activeSubmenuData, setActiveSubmenuData] = useState<SubmenuColumn[] | null>(null);
-//   const [isMegaMenuVisible, setIsMegaMenuVisible] = useState<boolean>(false);
-//   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-//   const HIDE_DELAY = 200; // milliseconds, adjust as needed
-
-//   const clearHideTimeout = () => {
-//     if (hoverTimeoutRef.current) {
-//       clearTimeout(hoverTimeoutRef.current);
-//       hoverTimeoutRef.current = null;
-//     }
-//   };
-
-//   const handleNavItemActivate = (submenuData: SubmenuColumn[]) => {
-//     clearHideTimeout();
-//     setActiveSubmenuData(submenuData);
-//     setIsMegaMenuVisible(true);
-//   };
-
-//   const scheduleHideMegaMenu = () => {
-//     clearHideTimeout();
-//     hoverTimeoutRef.current = setTimeout(() => {
-//       setIsMegaMenuVisible(false);
-//       // Consider delaying activeSubmenuData = null if MegaMenu has a fade-out animation
-//       // e.g., setTimeout(() => setActiveSubmenuData(null), HIDE_DELAY + animation_duration);
-//     }, HIDE_DELAY);
-//   };
-
-//   const handleMegaMenuMouseEnter = () => {
-//     clearHideTimeout(); // Mouse entered the MegaMenu, so keep it open
-//   };
-
-//   const handleMegaMenuMouseLeave = () => {
-//     scheduleHideMegaMenu(); // Mouse left the MegaMenu, schedule to hide
-//   };
-
-//   // Cleanup timeout on component unmount
-//   useEffect(() => {
-//     return () => {
-//       clearHideTimeout();
-//     };
-//   }, []);
-
-//   return (
-//     <nav className="relative z-[100] bg-white shadow-md py-4 px-4 font-[Inter]">
-//       <div className="container mx-auto flex items-center justify-between">
-//         <div className="flex-shrink-0">
-//           <Link href="/">
-//             <Logo />
-//           </Link>
-//         </div>
-
-//         <div className="absolute left-1/2 transform -translate-x-1/2 hidden lg:flex items-center space-x-8 text-gray-800 font-medium text-lg">
-//           <NavItem
-//             href="/products"
-//             submenu={productsSubmenuData} // Use the correct submenu data
-//             onActivate={handleNavItemActivate}
-//             onDeactivate={scheduleHideMegaMenu}
-//             isSubmenuActive={isMegaMenuVisible && activeSubmenuData === productsSubmenuData}
-//           >
-//             PRODUCTS
-//           </NavItem>
-//           <NavItem
-//             href="/industries"
-//             submenu={industrySubmenuData}
-//             onActivate={handleNavItemActivate}
-//             onDeactivate={scheduleHideMegaMenu}
-//             isSubmenuActive={isMegaMenuVisible && activeSubmenuData === industrySubmenuData}
-//           >
-//             INDUSTRIES
-//           </NavItem>
-//           <NavItem
-//             href="/services"
-//             submenu={servicesSubmenuData}
-//             onActivate={handleNavItemActivate}
-//             onDeactivate={scheduleHideMegaMenu} // Still call onDeactivate to hide any open menu
-//             isSubmenuActive={isMegaMenuVisible && activeSubmenuData === servicesSubmenuData}
-//           >
-//             SERVICES
-//           </NavItem>
-//           <NavItem
-//             href="/sustainability"
-//             onDeactivate={scheduleHideMegaMenu}
-//             isSubmenuActive={false}
-//           >
-//             SUSTAINABILITY
-//           </NavItem>
-//         </div>
-
-//         <div className="lg:hidden">
-//           {/* Mobile menu button placeholder */}
-//           <button type="button" className="text-gray-900">MENU</button>
-//         </div>
-//       </div>
-
-//       {/* MegaMenu is rendered here, positioned relative to this <nav> */}
-//       {/* It will only attempt to render if activeSubmenuData is not null */}
-//       {activeSubmenuData && (
-//         <MegaMenu
-//           columns={activeSubmenuData}
-//           isVisible={isMegaMenuVisible}
-//           onMouseEnter={handleMegaMenuMouseEnter}
-//           onMouseLeave={handleMegaMenuMouseLeave}
-//         />
-//       )}
-//     </nav>
-//   );
-// };
-
-// export default MainNavBar;
-
-
-
-'use client'
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Logo from '../Logo'; // Assuming you have this component
 import MegaMenu from './MegaMenu'; // Assuming you have this component
+import Image from 'next/image'; // Assuming you're using Next.js for images
 
 // --- Data & Types (Ensure these are defined or imported) ---
 interface SubmenuItem {
   name: string;
   href: string;
+  img?: string; // Optional image property
 }
 export interface SubmenuColumn {
   title: string; // Title can be optional for some mobile layouts
   items: SubmenuItem[];
+  img?: string; // Optional image property
 }
 
 // --- Paste your existing submenu data here ---
@@ -362,94 +23,98 @@ const industrySubmenuData: SubmenuColumn[] = [
     {
         title: 'Food & Beverages',
         items: [
-          { name: 'Dry food', href: '/industries/dry-food' },
-          { name: 'Processed food', href: '/industries/processed-food' },
-          { name: 'Fruit & vegetables', href: '/industries/fruit-vegetables' },
-          { name: 'Fast food & take away', href: '/industries/fast-food-take-away' },
-          { name: 'Sweets', href: '/industries/sweets' },
-          { name: 'Beverages & Liquids', href: '/industries/beverages-liquids' },
-          { name: 'Transport & Display', href: '/industries/transport-display' },
+          { name: 'Dry food', href: '/industries/dry-food', img: '/images/industries/dry-food.png' },
+          { name: 'Processed food', href: '/industries/processed-food', img: '/images/industries/processed-food.png' },
+          { name: 'Fruit & vegetables', href: '/industries/fruit-vegetables', img: '/images/industries/fruit-vegetables.png' },
+          { name: 'Fast food & take away', href: '/industries/fast-food-take-away', img: '/images/industries/fast-food-take-away.png' },
+          { name: 'Sweets', href: '/industries/sweets', img: '/images/industries/sweets.png' },
+          { name: 'Beverages & Liquids', href: '/industries/beverages-liquids', img: '/images/industries/beverages-liquids.png' },
+          { name: 'Transport & Display', href: '/industries/transport-display', img: '/images/industries/transport-display.png' },
         ],
       },
       {
         title: 'Consumer & Luxury',
         items: [
-          { name: 'Fashion & apparel', href: '/industries/fashion-apparel' },
-          { name: 'E-commerce', href: '/industries/ecommerce' },
-          { name: 'Cosmetics', href: '/industries/cosmetics' },
-          { name: 'Chocolate & Confectionary', href: '/industries/chocolate-confectionary' },
-          { name: 'Wine & Spirits', href: '/industries/wine-spirits' },
-          { name: 'Carrier bags', href: '/industries/carrier-bags' },
-          { name: 'Graphical & print', href: '/industries/graphical-print' },
-          { name: 'Household & gardening', href: '/industries/household-gardening' },
-          { name: 'Consumer electronics', href: '/industries/consumer-electronics' },
+          { name: 'Fashion & apparel', href: '/industries/fashion-apparel', img: '/images/industries/fashion-apparel.png' },
+          { name: 'E-commerce', href: '/industries/ecommerce',  img: '/images/industries/ecommerce.png' },
+          { name: 'Cosmetics', href: '/industries/cosmetics', img: '/images/industries/cosmetics.png' },
+          { name: 'Chocolate & Confectionary', href: '/industries/chocolate-confectionary', img: '/images/industries/chocolate-confectionary.png' },
+          { name: 'Wine & Spirits', href: '/industries/wine-spirits', img: '/images/industries/wine-spirits.png' },
+          { name: 'Carrier bags', href: '/industries/carrier-bags', img: '/images/industries/carrier-bags.png' },
+          { name: 'Graphical & print', href: '/industries/graphical-print', img: '/images/industries/graphical-print.png' },
+          { name: 'Household & gardening', href: '/industries/household-gardening', img: '/images/industries/household-gardening.png' },
+          { name: 'Consumer electronics', href: '/industries/consumer-electronics',   img: '/images/industries/consumer-electronics.png' },
         ],
       },
       {
         title: 'Industrial',
+        img: '/images/industries/industrial.png',
         items: [
-          { name: 'Industrial bags', href: '/industries/industrial-bags' },
-          { name: 'Heavy Duty packaging', href: '/industries/heavy-duty-packaging' },
+          { name: 'Industrial bags', href: '/industries/industrial-bags', img: '/images/industries/industrial-bags.png' },
+          { name: 'Heavy Duty packaging', href: '/industries/heavy-duty-packaging', img: '/images/industries/heavy-duty-packaging.png' },
         ],
       },
       {
         title: 'Medical & Hygiene',
         items: [
-          { name: 'Medical devices', href: '/industries/medical-devices' },
-          { name: 'Hospital', href: '/industries/hospital' },
-          { name: 'Hygiene & personal care', href: '/industries/hygiene-personal-care' },
-          { name: 'Pharmaceuticals', href: '/industries/pharmaceuticals' },
-          { name: 'Medical Packaging Blog', href: '/blog/medical-packaging' },
+          { name: 'Medical devices', href: '/industries/medical-devices',   img: '/images/industries/medical-devices.png' },
+          { name: 'Hospital', href: '/industries/hospital', img: '/images/industries/hospital.png' },
+          { name: 'Hygiene & personal care', href: '/industries/hygiene-personal-care', img: '/images/industries/hygiene-personal-care.png' },
+          { name: 'Pharmaceuticals', href: '/industries/pharmaceuticals', img: '/images/industries/pharmaceuticals.png' },
+          { name: 'Medical Packaging Blog', href: '/blog/medical-packaging',  img: '/images/industries/medical-packaging.png' },
         ],
       },
 ];
 
 const productsSubmenuData: SubmenuColumn[] = [
+          {
+        title: 'Universal Stock Products',
+        img: '/images/products/universal-stock-products.png',
+        items: [
+            { name: 'White Kraft Wrapping Paper', href: '/products/product-7e', img: '/images/products/white-kraft-wrapping-paper.png' },
+            { name: 'Nature Kraft Wrapping Paper', href: '/products/product-8e', img: '/images/products/nature-kraft-wrapping-paper.png' },
+            { name: 'Placemats Duro Kraft Natur', href: '/products/product-9e', img: '/images/products/placemats-duro-kraft-natur.png' },
+            { name: 'Placemats White Kraft Paper', href: '/products/product-10e', img: '/images/products/placemats-white-kraft-paper.png' },
+            { name: 'Natur Kraft with Flat Handles', href: '/products/product-1e', img: '/images/products/natur-kraft-with-flat-handles.png' },
+            { name: 'White Kraft with Flat Handles', href: '/products/product-2e', img: '/images/products/white-kraft-with-flat-handles.png' },
+        ]
+    },
     {
         title: 'Paper Bags With Handle',
         items: [
-            { name: 'Kraft Paper Carrier Bags', href: '/products/product-1'},
-            { name: 'Shopping Bags for textile stores', href: '/products/product-2'},
-            { name: 'Paper Bag with handle for restaurants delivery', href: '/products/product-3'},
-            { name: 'Shopping Paper Bag for pharmacies', href: '/products/product-4'},
-            { name: 'Ventilated Bag for fresh products', href: '/products/product-5'},
+            { name: 'Kraft Paper Carrier Bags', href: '/products/product-1', img: '/images/products/kraft-paper-carrier-bags.png' },
+            { name: 'Shopping Bags for textile stores', href: '/products/product-2', img: '/images/products/shopping-bags-textile-stores.png' },
+            { name: 'Paper Bag with handle for restaurants delivery', href: '/products/product-3', img: '/images/products/paper-bag-handle-restaurants-delivery.png' },
+            { name: 'Shopping Paper Bag for pharmacies', href: '/products/product-4', img: '/images/products/shopping-paper-bag-pharmacies.png' },
+            { name: 'Ventilated Bag for fresh products', href: '/products/product-5',   img: '/images/products/ventilated-bag-fresh-products.png' },
         ],
     },
     {
         title: 'Paper Bags Without Handle',
+        img: '/images/products/paper-bags-without-handle.png',
         items: [
-            { name: 'Fast food Paper Bags', href: '/products/product-4b'}, // Ensure unique names if possible for keys
-            { name: 'Small Paper Bags for pharmacy', href: '/products/product-5b'},
+            { name: 'Fast food Paper Bags', href: '/products/product-4b', img: '/images/products/fast-food-paper-bags.png'}, // Ensure unique names if possible for keys
+            { name: 'Small Paper Bags for pharmacy', href: '/products/product-5b', img: '/images/products/small-paper-bags-pharmacy.png' },
         ],
     },
     {
         title: 'Paper Sacks',
+        img: '/images/products/paper-sacks.png',
         items: [
-            { name: 'Paper Sacks with handles made of 2-5 layers of paper', href: '/products/product-7c'},
+            { name: 'Paper Sacks with handles made of 2-5 layers of paper', href: '/products/product-7c', img: '/images/products/paper-sacks-2-5-layers.png' },
         ]
     },
     {
         title: 'Wrapping Paper', // Changed to D for clarity
+        img: '/images/products/wrapping-paper.png',
         items: [
-            { name: 'Wrapping paper sheets', href: '/products/product-7d'},
+            { name: 'Wrapping paper sheets', href: '/products/product-7d', img: '/images/products/wrapping-paper-sheets.png' },
         ]
     },
     {
         title: 'Paper Corners',
         items: [
-            { name: 'Paper corners for food products, pastries and confectionery', href: '/products/product-7e'},      
-        ]
-    },
-        {
-        title: 'Universal Stock Products',
-        items: [
-            { name: 'White Kraft Wrapping Paper EXONIA, 250×350 mm', href: '/products/product-7e'},
-            { name: 'Nature Kraft Wrapping Paper EXONIA, 250×350 mm', href: '/products/product-8e'},
-            { name: 'Placemats Duro Kraft Natur EXONIA, 293×400 mm, METROPOLITAN NEWS', href: '/products/product-9e'},
-            { name: 'Placemats White Kraft Paper EXONIA, 293×400 mm, METROPOLITAN NEWS', href: '/products/product-10e'},
-            { name: 'EXONIA Paper Bags, Natur Kraft with Flat Handles', href: '/products/product-1e'},
-            { name: 'EXONIA Paper Bags, White Kraft with Flat Handles', href: '/products/product-2e'},
-            { name: 'The bags are suitable for food and non-food shops, catering, confectioners and bakeries, fast-food, etc', href: '/products/product-3e'},      
+            { name: 'Paper corners for food products, pastries and confectionery', href: '/products/product-7e', img: '/images/products/paper-corners-food-products.png' },      
         ]
     },
 ];
@@ -457,33 +122,37 @@ const productsSubmenuData: SubmenuColumn[] = [
 const servicesSubmenuData: SubmenuColumn[] = [
   {
     title: 'Custom Sustainable Packaging Design & Prototyping',
+    img: '/images/services/custom-sustainable-packaging.png',
     items: [
-      { name: 'Digital mock-ups & on-demand samples', href: '/services/design-prototyping' },
-      { name: 'Material optimization analysis', href: '/services/material-optimization' },
-      { name: 'User-testing feedback loops', href: '/services/user-testing' },
+      { name: 'Digital mock-ups & on-demand samples', href: '/services/design-prototyping', img: '/images/services/digital-mockups.png' },
+      { name: 'Material optimization analysis', href: '/services/material-optimization', img: '/images/services/material-optimization.png' },
+      { name: 'User-testing feedback loops', href: '/services/user-testing', img: '/images/services/user-testing.png' },
     ],
   },
   {
     title: 'Private-Label & On-Demand Printing',
+    img: '/images/services/private-label-on-demand.png',
     items: [
-      { name: 'Full-color variable-data print', href: '/services/variable-printing' },
-      { name: 'Eco-friendly inks & varnishes', href: '/services/eco-friendly-inks' },
+      { name: 'Full-color variable-data print', href: '/services/variable-printing', img: '/images/services/variable-printing.png' },
+      { name: 'Eco-friendly inks & varnishes', href: '/services/eco-friendly-inks', img: '/images/services/eco-friendly-inks.png' },
     ],
   },
   {
     title: 'Subscription Replenishment & Inventory Management',
+    img: '/images/services/subscription-replenishment.png',
     items: [
-      { name: 'Scheduled shipment service', href: '/services/scheduled-shipments' },
-      { name: 'Automated reorder triggers', href: '/services/reorder-triggers' },
-      { name: 'Online portal & ESG metrics', href: '/services/portal-esg' },
+      { name: 'Scheduled shipment service', href: '/services/scheduled-shipments',  img: '/images/services/scheduled-shipments.png' },
+      { name: 'Automated reorder triggers', href: '/services/reorder-triggers', img: '/images/services/reorder-triggers.png' },
+      { name: 'Online portal & ESG metrics', href: '/services/portal-esg', img: '/images/services/portal-esg.png' },
     ],
   },
   {
     title: 'Sustainability Consulting & Certification Support',
+    img: '/images/services/sustainability-consulting.png',
     items: [
-      { name: 'Life-cycle assessments (LCA)', href: '/services/lca' },
-      { name: 'FSC/PEFC & compostability guidance', href: '/services/certification-guidance' },
-      { name: 'Custom eco-impact reporting', href: '/services/eco-reporting' },
+      { name: 'Life-cycle assessments (LCA)', href: '/services/lca', img: '/images/services/lca.png' },
+      { name: 'FSC/PEFC & compostability guidance', href: '/services/certification-guidance', img: '/images/services/certification-guidance.png' },
+      { name: 'Custom eco-impact reporting', href: '/services/eco-reporting', img: '/images/services/eco-reporting.png' },
     ],
   },
 ];
@@ -651,9 +320,19 @@ const MobileNavItem: React.FC<MobileNavItemProps> = ({ href, children, submenu, 
           {submenu.map((column, colIndex) => (
             <div key={column.title || `col-${colIndex}`} className="pt-2 pb-1 pl-4"> {/* Indent submenu columns */}
               {column.title && (
+                <div>
+                <Image 
+                  src={column.img || '/images/default-placeholder.png'}
+                  alt={column.title}
+                  className="w-8 h-8 mb-2"
+                  width={32}
+                  height={32}
+                />
+
                 <h4 className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
                   {column.title}
                 </h4>
+                </div>
               )}
               <ul>
                 {column.items.map((item, itemIndex) => (
@@ -664,6 +343,15 @@ const MobileNavItem: React.FC<MobileNavItemProps> = ({ href, children, submenu, 
                       className="block py-2.5 px-4 text-gray-600 hover:bg-gray-200 hover:text-gray-800 rounded-md text-sm"
                       aria-current={typeof window !== 'undefined' && window.location.pathname === item.href ? 'page' : undefined}
                     >
+                      {item.img && (
+                        <Image
+                          src={item.img}
+                          alt={item.name}
+                          className="w-6 h-6 mr-2 inline-block"
+                          width={24}
+                          height={24}
+                        />
+                      )}
                       {item.name}
                     </Link>
                   </li>
@@ -864,33 +552,3 @@ const MainNavBar: React.FC = () => {
 };
 
 export default MainNavBar;
-
-// --- Dummy Components (replace with your actual implementations) ---
-// const Logo: React.FC = () => <div className="text-2xl font-bold text-yellow-600">YourLogo</div>;
-// const MegaMenu: React.FC<any> = ({ columns, isVisible, onMouseEnter, onMouseLeave }) => {
-//   if (!isVisible || !columns) return null;
-//   return (
-//     <div
-//       onMouseEnter={onMouseEnter}
-//       onMouseLeave={onMouseLeave}
-//       className="absolute top-full left-0 w-full bg-white shadow-lg p-8 border-t border-gray-200"
-//     >
-//       <div className="container mx-auto grid grid-cols-4 gap-8">
-//         {columns.map((col: SubmenuColumn) => (
-//           <div key={col.title}>
-//             <h3 className="font-semibold text-gray-800 mb-3">{col.title}</h3>
-//             <ul>
-//               {col.items.map((item: SubmenuItem) => (
-//                 <li key={item.name} className="mb-1.5">
-//                   <Link href={item.href} className="text-gray-600 hover:text-yellow-500 text-sm">
-//                     {item.name}
-//                   </Link>
-//                 </li>
-//               ))}
-//             </ul>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
