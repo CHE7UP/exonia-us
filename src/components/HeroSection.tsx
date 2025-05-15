@@ -147,7 +147,8 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { Package, Recycle, Play } from 'lucide-react';
+import { Package, Recycle, Play, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 // No more GSAP import
 // import gsap from 'gsap';
 
@@ -205,6 +206,7 @@ const HeroSection: React.FC = () => {
           icon={<Package size={40} />}
           description="Premium customized packaging solutions for your brand identity. We create distinctive packaging that elevates your brand."
           position="left"
+          button="EXPLORE MORE"
         />
 
         {/* Center divider line - add animation class */}
@@ -221,6 +223,7 @@ const HeroSection: React.FC = () => {
           icon={<Recycle size={40} />}
           description="Eco-friendly packaging innovations that reduce environmental impact while maintaining quality and performance."
           position="right"
+          button="EXPLORE MORE"
         />
       </div>
 
@@ -278,7 +281,9 @@ interface HeroHalfSectionProps {
   secondWord: string;
   icon: React.ReactNode;
   description: string;
+  button:string;
   position: 'left' | 'right';
+
 }
 
 const HeroHalfSection: React.FC<HeroHalfSectionProps> = ({
@@ -286,6 +291,7 @@ const HeroHalfSection: React.FC<HeroHalfSectionProps> = ({
   secondWord,
   icon,
   description,
+  button,
 }) => {
   // Ref needed for setting CSS variables
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -333,12 +339,26 @@ const HeroHalfSection: React.FC<HeroHalfSectionProps> = ({
             {secondWord}
           </div>
         </div>
-        <div className="h-24 flex items-start justify-center pt-2"> {/* Added padding-top for spacing */}
+        <div className="h-24 flex flex-col items-center justify-center pt-16"> {/* Added padding-top for spacing */}
           {/* Description - styled and animated by CSS via parent hover */}
           {/* The 'description' class links it to the CSS transitions */}
           <p className="description text-white/90 text-sm md:text-md max-w-xs px-4 md:px-6 text-center">
             {description}
           </p>
+          <Link
+            className=" description inline-block rounded-full w-[190px] text-md cursor-pointer mt-6 transition-all duration-300" // Full coverage for click
+            href="products" // Adjust link as needed
+          >
+  <div
+    className="flex items-center justify-center w-auto py-2 px-4 text-center text-gray-700 font-semibold rounded-full bg-white/60 hover:bg-white/90 transition-all duration-300 shadow-sm"
+  >
+    <span>{button}</span>
+    <ArrowRight 
+      size={18} 
+      className="ml-2 transform transition-all duration-300 ease-in-out group-hover:translate-x-1"
+    />
+  </div>
+          </Link>
         </div>
       </div>
     </div>

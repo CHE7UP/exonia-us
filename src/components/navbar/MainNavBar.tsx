@@ -231,7 +231,7 @@ const BurgerButton: React.FC<BurgerButtonProps> = ({ isOpen, onClick, className 
     onClick={onClick}
     className={`p-2 rounded-md text-gray-700 hover:text-yellow-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500 z-[150] ${className}`}
     aria-label={isOpen ? "Close main menu" : "Open main menu"}
-    aria-expanded={isOpen}
+    aria-expanded={isOpen ? "true" : "false"}
     aria-controls="mobile-menu-panel" // Ensure the mobile panel has this ID
   >
     <div className="space-y-1.5"> {/* Adjusted spacing for a tighter look */}
